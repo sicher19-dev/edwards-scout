@@ -66,6 +66,20 @@ body{
 }
 .pill .dot{width:7px;height:7px;border-radius:99px}
 
+/* ---------- arsenal (shapes) ---------- */
+.ars{display:flex;flex-direction:column;gap:10px}
+.apitch{border:1px solid var(--line);border-radius:13px;background:var(--card);padding:12px 14px}
+.apitch .r1{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}
+.apitch .nm{font-family:'Archivo Narrow',sans-serif;font-weight:700;font-size:17px;letter-spacing:.03em;text-transform:uppercase;display:inline-flex;align-items:center;gap:8px}
+.apitch .nm .dot{width:9px;height:9px;border-radius:99px}
+.apitch .use{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gold)}
+.apitch .wf{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--low)}
+.apitch .usebar{height:6px;border-radius:99px;background:var(--card2);overflow:hidden;margin:8px 0 9px}
+.apitch .usebar i{display:block;height:100%;border-radius:99px}
+.apitch .specs{display:flex;flex-wrap:wrap;gap:5px 14px;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--dim)}
+.apitch .specs b{color:#dcdcd8;font-weight:500}
+.planmap{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gold-soft);margin-top:3px}
+
 /* ---------- section heading ---------- */
 .sec{margin-top:30px}
 .sec-h{
@@ -192,6 +206,12 @@ body{
     <div class="rep" id="armRep"></div>
   </div>
 
+  <!-- ARSENAL (optional, rendered if ARM_DATA.arsenal present) -->
+  <div class="sec" id="arsSec" style="display:none">
+    <div class="sec-h">Arsenal — Shapes</div>
+    <div class="ars" id="ars"></div>
+  </div>
+
   <!-- BOTTOM LINE -->
   <div class="sec">
     <div class="sec-h">Bottom Line — 5 Keys</div>
@@ -265,7 +285,7 @@ const ARM_DATA = {
     "name": "GARRETT EDWARDS",
     "hand": "R",
     "line": "RHP \u00b7 Rays / Double-A Montgomery (SL)",
-    "asOf": "as of 2026-06-06",
+    "asOf": "as of 2026-06-15",
     "isSample": false,
     "source": "Data: MLB Stats API (AA \u2014 no Hawk-Eye spin/EV). wOBACON results-based; no movement.",
     "note": "AA full-season reference: results-based wOBACON; no movement/EV at this level; zones from calibrated legacy coords."
@@ -287,23 +307,23 @@ const ARM_DATA = {
   "keys": [
     {
       "n": 1,
-      "html": "<b>Work down \u2014 that's the out zone.</b> 47 of 101 hitters are coldest at the bottom and it draws the most whiffs (<span class='g'>29%</span>). Live at the knees with two strikes."
+      "html": "<b>Work down \u2014 that's the out zone.</b> 51 of 107 hitters are coldest at the bottom and it draws the most whiffs (<span class='g'>28%</span>). Live at the knees with two strikes."
     },
     {
       "n": 2,
-      "html": "<b>Middle is the danger.</b> The heart of the zone is where this league does its damage \u2014 <span class='r'>38 hitters</span> punish it most. No get-me-over over the plate."
+      "html": "<b>Middle is the danger.</b> The heart of the zone is where this league does its damage \u2014 <span class='r'>42 hitters</span> punish it most. No get-me-over over the plate."
     },
     {
       "n": 3,
-      "html": "<b>Elevate to chase, not for strikes.</b> Up draws a <span class='g'>26% whiff</span> but is the hottest contact third (.480) \u2014 use it above the zone, not in it."
+      "html": "<b>Elevate to chase, not for strikes.</b> Up draws a <span class='g'>27% whiff</span> but is the hottest contact third (.471) \u2014 use it above the zone, not in it."
     },
     {
       "n": 4,
-      "html": "<b>Respect a real top end.</b> <span class='y'>22 of 101</span> grade high or elite \u2014 pitch backwards to them and stay off the middle entirely."
+      "html": "<b>Respect a real top end.</b> <span class='y'>25 of 107</span> grade high or elite \u2014 pitch backwards to them and stay off the middle entirely."
     },
     {
       "n": 5,
-      "html": "<b>Attack the bottom half.</b> Half the pool (50 of 101) is low-tier \u2014 fill up the lower third and make them beat you on your pitch."
+      "html": "<b>Attack the bottom half.</b> Half the pool (53 of 107) is low-tier \u2014 fill up the lower third and make them beat you on your pitch."
     }
   ],
   "zoneMetrics": [
@@ -320,6 +340,8 @@ const ARM_DATA = {
       "label": "Pitch%"
     }
   ],
+  "arsenal": [],
+  "bucketMap": {},
   "opponents": [
     {
       "abbr": "BIR",
@@ -376,44 +398,44 @@ const ARM_DATA = {
           "name": "Anthony DePino",
           "bats": "R",
           "pos": "3B",
-          "woba": ".421",
+          "woba": ".407",
           "tier": "elite",
           "attack": "Down",
           "avoid": "Up",
-          "note": "Most damage up (0.6); coldest down.",
+          "note": "Most damage up (0.588); coldest down.",
           "zone": {
             "xwobacon": [
-              0.706,
+              0.617,
               0.507,
-              0.507,
-              0.25,
-              0.44,
-              0.486,
+              0.602,
+              0.469,
+              0.522,
+              0.432,
+              0.97,
               0.0,
-              0.0,
-              0.44
+              0.33
             ],
             "whiff": [
-              13,
-              20,
-              45,
-              12,
+              16,
+              23,
+              33,
+              9,
+              4,
+              22,
               0,
-              24,
               0,
-              0,
-              29
+              32
             ],
             "freq": [
-              14,
-              9,
               12,
-              8,
-              13,
-              16,
-              4,
               9,
-              16
+              11,
+              8,
+              16,
+              17,
+              7,
+              7,
+              15
             ]
           }
         },
@@ -468,44 +490,44 @@ const ARM_DATA = {
           "name": "Alec Makarewicz",
           "bats": "L",
           "pos": "3B",
-          "woba": ".366",
+          "woba": ".362",
           "tier": "high",
           "attack": "Down",
           "avoid": "Middle",
-          "note": "Most damage middle (0.616); coldest down.",
+          "note": "Most damage middle (0.703); coldest down.",
           "zone": {
             "xwobacon": [
-              0.263,
-              0.41,
+              0.176,
+              0.503,
               0.364,
-              0.147,
-              0.885,
-              0.502,
+              0.376,
+              0.907,
+              0.609,
               0.196,
-              0.549,
+              0.449,
               0.0
             ],
             "whiff": [
-              24,
-              24,
-              13,
-              33,
-              18,
+              23,
+              26,
+              12,
+              28,
+              16,
               0,
               17,
-              22,
-              28
+              19,
+              25
             ],
             "freq": [
               12,
               12,
+              10,
               11,
-              11,
-              15,
-              9,
+              16,
               8,
+              6,
               14,
-              8
+              9
             ]
           }
         },
@@ -603,56 +625,102 @@ const ARM_DATA = {
         },
         {
           "slot": 7,
-          "name": "Jacob Burke",
-          "bats": "R",
-          "pos": "OF",
-          "woba": ".339",
+          "name": "Samuel Zavala",
+          "bats": "L",
+          "pos": "CF",
+          "woba": ".328",
           "tier": "med",
-          "attack": "Up",
-          "avoid": "Down",
-          "note": "Most damage down (0.545); coldest up.",
+          "attack": "Down",
+          "avoid": "Up",
+          "note": "Most damage up (0.438); coldest down.",
           "zone": {
             "xwobacon": [
-              0.44,
-              0.291,
-              0.266,
-              0.43,
-              0.514,
-              0.473,
               0.625,
-              0.421,
-              0.703
+              0.458,
+              0.389,
+              0.47,
+              0.385,
+              0.177,
+              0.266,
+              0.32,
+              0.11
             ],
             "whiff": [
-              0,
-              17,
-              15,
-              5,
-              0,
-              10,
-              40,
-              16,
-              12
+              53,
+              34,
+              47,
+              3,
+              18,
+              20,
+              24,
+              20,
+              11
             ],
             "freq": [
-              6,
-              12,
-              14,
+              9,
+              9,
+              11,
+              13,
+              15,
               13,
               10,
-              16,
-              5,
-              15,
-              9
+              11,
+              8
             ]
           }
         },
         {
           "slot": 8,
+          "name": "Jacob Burke",
+          "bats": "R",
+          "pos": "OF",
+          "woba": ".328",
+          "tier": "med",
+          "attack": "Up",
+          "avoid": "Middle",
+          "note": "Most damage middle (0.482); coldest up.",
+          "zone": {
+            "xwobacon": [
+              0.352,
+              0.449,
+              0.266,
+              0.514,
+              0.463,
+              0.473,
+              0.625,
+              0.345,
+              0.464
+            ],
+            "whiff": [
+              0,
+              14,
+              14,
+              4,
+              0,
+              13,
+              40,
+              14,
+              12
+            ],
+            "freq": [
+              8,
+              12,
+              13,
+              13,
+              11,
+              14,
+              4,
+              14,
+              12
+            ]
+          }
+        },
+        {
+          "slot": 9,
           "name": "Calvin Harris",
           "bats": "L",
           "pos": "C",
-          "woba": ".333",
+          "woba": ".321",
           "tier": "med",
           "attack": "Middle",
           "avoid": "Down",
@@ -661,7 +729,7 @@ const ARM_DATA = {
             "xwobacon": [
               0.0,
               0.334,
-              0.416,
+              0.364,
               0.0,
               0.328,
               0.208,
@@ -673,120 +741,28 @@ const ARM_DATA = {
               0,
               10,
               5,
-              7,
+              12,
               0,
               0,
-              17,
+              15,
               19,
               25
             ],
             "freq": [
-              8,
+              7,
               15,
               17,
               10,
               10,
               8,
-              9,
+              10,
               13,
               10
             ]
           }
         },
         {
-          "slot": 9,
-          "name": "Samuel Zavala",
-          "bats": "L",
-          "pos": "CF",
-          "woba": ".328",
-          "tier": "med",
-          "attack": "Down",
-          "avoid": "Up",
-          "note": "Most damage up (0.485); coldest down.",
-          "zone": {
-            "xwobacon": [
-              0.0,
-              0.504,
-              0.467,
-              0.467,
-              0.402,
-              0.194,
-              0.266,
-              0.251,
-              0.126
-            ],
-            "whiff": [
-              57,
-              34,
-              50,
-              4,
-              19,
-              20,
-              29,
-              26,
-              12
-            ],
-            "freq": [
-              9,
-              10,
-              12,
-              12,
-              16,
-              12,
-              11,
-              10,
-              8
-            ]
-          }
-        },
-        {
           "slot": 10,
-          "name": "Jorge Corona",
-          "bats": "R",
-          "pos": "C",
-          "woba": ".320",
-          "tier": "med",
-          "attack": "Down",
-          "avoid": "Middle",
-          "note": "Most damage middle (0.617); coldest down.",
-          "zone": {
-            "xwobacon": [
-              0.507,
-              0.0,
-              0.0,
-              1.015,
-              0.44,
-              0.587,
-              0.0,
-              0.33,
-              0.22
-            ],
-            "whiff": [
-              17,
-              40,
-              75,
-              17,
-              30,
-              40,
-              0,
-              0,
-              60
-            ],
-            "freq": [
-              12,
-              10,
-              10,
-              8,
-              11,
-              16,
-              5,
-              17,
-              10
-            ]
-          }
-        },
-        {
-          "slot": 11,
           "name": "Andy Weber",
           "bats": "L",
           "pos": "2B",
@@ -832,53 +808,53 @@ const ARM_DATA = {
           }
         },
         {
-          "slot": 12,
+          "slot": 11,
           "name": "Jordan Sprinkle",
           "bats": "R",
           "pos": "SS",
-          "woba": ".307",
+          "woba": ".302",
           "tier": "low",
           "attack": "Down",
           "avoid": "Middle",
-          "note": "Most damage middle (0.596); coldest down.",
+          "note": "Most damage middle (0.566); coldest down.",
           "zone": {
             "xwobacon": [
-              0.208,
-              0.251,
+              0.167,
+              0.264,
               0.098,
-              0.72,
-              0.586,
+              0.658,
+              0.55,
               0.503,
-              0.0,
+              0.293,
               0.0,
               0.176
             ],
             "whiff": [
-              0,
-              15,
+              4,
+              21,
               23,
-              6,
-              7,
-              12,
               9,
-              64,
-              40
+              8,
+              11,
+              14,
+              62,
+              38
             ],
             "freq": [
-              10,
+              11,
               9,
-              14,
-              8,
+              12,
+              9,
               17,
-              16,
-              6,
+              15,
+              7,
               10,
               10
             ]
           }
         },
         {
-          "slot": 13,
+          "slot": 12,
           "name": "Caden Connor",
           "bats": "L",
           "pos": "OF",
@@ -924,140 +900,186 @@ const ARM_DATA = {
           }
         },
         {
+          "slot": 13,
+          "name": "Jorge Corona",
+          "bats": "R",
+          "pos": "C",
+          "woba": ".293",
+          "tier": "low",
+          "attack": "Down",
+          "avoid": "Middle",
+          "note": "Most damage middle (0.427); coldest down.",
+          "zone": {
+            "xwobacon": [
+              0.507,
+              0.0,
+              0.0,
+              0.507,
+              0.352,
+              0.44,
+              0.0,
+              0.264,
+              0.22
+            ],
+            "whiff": [
+              15,
+              46,
+              75,
+              12,
+              33,
+              36,
+              0,
+              0,
+              58
+            ],
+            "freq": [
+              11,
+              10,
+              12,
+              9,
+              11,
+              15,
+              5,
+              16,
+              11
+            ]
+          }
+        },
+        {
           "slot": 14,
           "name": "Drake Logan",
           "bats": "R",
           "pos": "3B",
-          "woba": ".290",
+          "woba": ".281",
           "tier": "low",
           "attack": "Middle",
-          "avoid": "Up",
-          "note": "Most damage up (0.71); coldest middle.",
+          "avoid": "Down",
+          "note": "Most damage down (0.56); coldest middle.",
           "zone": {
             "xwobacon": [
               0.0,
-              1.065,
+              0.71,
               0.0,
-              0.88,
+              0.44,
               0.352,
-              0.0,
+              0.88,
               0.44,
               0.594,
               0.0
             ],
             "whiff": [
               75,
-              50,
+              45,
               29,
               0,
               23,
-              80,
+              67,
               0,
-              29,
+              33,
               60
             ],
             "freq": [
               8,
               14,
-              14,
+              13,
               5,
-              15,
+              14,
               12,
-              7,
+              8,
               16,
-              9
+              10
             ]
           }
         },
         {
           "slot": 15,
-          "name": "Jeral Perez",
-          "bats": "R",
-          "pos": "3B",
-          "woba": ".268",
-          "tier": "low",
-          "attack": "Up",
-          "avoid": "Down",
-          "note": "Most damage down (0.372); coldest up.",
-          "zone": {
-            "xwobacon": [
-              0.176,
-              0.347,
-              0.352,
-              0.43,
-              0.504,
-              0.098,
-              0.352,
-              0.301,
-              0.462
-            ],
-            "whiff": [
-              35,
-              20,
-              35,
-              0,
-              6,
-              29,
-              20,
-              14,
-              17
-            ],
-            "freq": [
-              10,
-              19,
-              13,
-              7,
-              9,
-              14,
-              4,
-              12,
-              11
-            ]
-          }
-        },
-        {
-          "slot": 16,
           "name": "Wilfred Veras",
           "bats": "R",
           "pos": "OF",
-          "woba": ".265",
+          "woba": ".266",
           "tier": "low",
           "attack": "Down",
-          "avoid": "Middle",
-          "note": "Most damage middle (0.401); coldest down.",
+          "avoid": "Up",
+          "note": "Most damage up (0.515); coldest down.",
           "zone": {
             "xwobacon": [
               0.0,
               0.584,
-              0.0,
-              0.582,
-              0.486,
-              0.235,
+              2.03,
+              0.529,
+              0.432,
+              0.22,
               0.11,
-              0.727,
+              0.485,
               0.354
             ],
             "whiff": [
-              32,
-              42,
-              69,
+              30,
+              46,
+              61,
               10,
-              18,
-              15,
-              14,
-              29,
+              17,
+              17,
+              13,
+              25,
               23
             ],
             "freq": [
               12,
               13,
-              10,
+              11,
               10,
               11,
-              13,
+              14,
               8,
               10,
-              13
+              12
+            ]
+          }
+        },
+        {
+          "slot": 16,
+          "name": "Jeral Perez",
+          "bats": "R",
+          "pos": "3B",
+          "woba": ".260",
+          "tier": "low",
+          "attack": "Up",
+          "avoid": "Down",
+          "note": "Most damage down (0.363); coldest up.",
+          "zone": {
+            "xwobacon": [
+              0.147,
+              0.336,
+              0.352,
+              0.473,
+              0.458,
+              0.098,
+              0.352,
+              0.274,
+              0.458
+            ],
+            "whiff": [
+              33,
+              18,
+              39,
+              5,
+              9,
+              29,
+              20,
+              12,
+              15
+            ],
+            "freq": [
+              10,
+              20,
+              12,
+              9,
+              10,
+              13,
+              4,
+              11,
+              11
             ]
           }
         },
@@ -1068,42 +1090,42 @@ const ARM_DATA = {
           "pos": "SS",
           "woba": ".233",
           "tier": "low",
-          "attack": "Up",
-          "avoid": "Middle",
-          "note": "Most damage middle (0.304); coldest up.",
+          "attack": "Down",
+          "avoid": "Up",
+          "note": "Most damage up (0.271); coldest down.",
           "zone": {
             "xwobacon": [
+              0.406,
+              0.0,
               0.507,
+              0.237,
+              0.237,
+              0.357,
               0.0,
-              0.0,
-              0.126,
-              0.334,
-              0.5,
-              0.0,
-              0.323,
+              0.291,
               0.0
             ],
             "whiff": [
-              11,
-              8,
-              50,
-              19,
-              6,
+              15,
+              7,
+              36,
+              20,
+              4,
               0,
-              100,
-              14,
-              12
+              75,
+              19,
+              9
             ],
             "freq": [
               12,
-              16,
-              7,
-              17,
-              16,
+              12,
               9,
+              16,
+              19,
+              8,
               3,
-              13,
-              8
+              11,
+              9
             ]
           }
         }
@@ -1118,7 +1140,7 @@ const ARM_DATA = {
           "name": "Garret Forrester",
           "bats": "R",
           "pos": "3B",
-          "woba": ".456",
+          "woba": ".457",
           "tier": "elite",
           "attack": "Up",
           "avoid": "Down",
@@ -1128,8 +1150,8 @@ const ARM_DATA = {
               0.0,
               0.0,
               0.0,
-              0.426,
-              0.147,
+              0.355,
+              0.364,
               1.082,
               1.353,
               1.25,
@@ -1137,30 +1159,76 @@ const ARM_DATA = {
             ],
             "whiff": [
               0,
-              40,
+              50,
               33,
               0,
-              12,
+              9,
               0,
               25,
               0,
-              0
+              17
             ],
             "freq": [
               6,
               9,
               16,
               9,
-              14,
               16,
-              8,
-              11,
-              10
+              14,
+              7,
+              12,
+              12
             ]
           }
         },
         {
           "slot": 2,
+          "name": "Juan Matheus",
+          "bats": "L",
+          "pos": "SS",
+          "woba": ".361",
+          "tier": "high",
+          "attack": "Middle",
+          "avoid": "Down",
+          "note": "Most damage down (1.235); coldest middle.",
+          "zone": {
+            "xwobacon": [
+              0.0,
+              0.22,
+              0.88,
+              0.0,
+              0.176,
+              0.44,
+              0.0,
+              1.455,
+              1.015
+            ],
+            "whiff": [
+              0,
+              6,
+              0,
+              50,
+              10,
+              0,
+              0,
+              0,
+              0
+            ],
+            "freq": [
+              16,
+              24,
+              7,
+              7,
+              19,
+              9,
+              1,
+              6,
+              11
+            ]
+          }
+        },
+        {
+          "slot": 3,
           "name": "Payton Green",
           "bats": "R",
           "pos": "SS",
@@ -1206,7 +1274,7 @@ const ARM_DATA = {
           }
         },
         {
-          "slot": 3,
+          "slot": 4,
           "name": "Brendan Jones",
           "bats": "L",
           "pos": "CF",
@@ -1252,53 +1320,53 @@ const ARM_DATA = {
           }
         },
         {
-          "slot": 4,
-          "name": "Fenwick Trimble",
+          "slot": 5,
+          "name": "Ryan Ignoffo",
           "bats": "R",
-          "pos": "OF",
-          "woba": ".345",
+          "pos": "C",
+          "woba": ".346",
           "tier": "med",
-          "attack": "Down",
+          "attack": "Middle",
           "avoid": "Up",
-          "note": "Most damage up (0.577); coldest down.",
+          "note": "Most damage up (0.517); coldest middle.",
           "zone": {
             "xwobacon": [
-              0.483,
-              0.774,
-              0.352,
-              0.452,
-              0.4,
-              0.43,
-              0.483,
-              0.238,
-              0.0
+              0.648,
+              0.637,
+              0.0,
+              0.357,
+              0.239,
+              0.293,
+              0.467,
+              0.71,
+              0.44
             ],
             "whiff": [
-              21,
-              41,
-              25,
-              10,
-              22,
-              28,
-              8,
+              9,
               7,
-              35
+              0,
+              0,
+              12,
+              12,
+              14,
+              12,
+              62
             ],
             "freq": [
-              10,
-              13,
-              9,
-              10,
-              16,
-              13,
-              5,
+              7,
+              17,
+              14,
+              4,
+              19,
               12,
-              11
+              9,
+              5,
+              13
             ]
           }
         },
         {
-          "slot": 5,
+          "slot": 6,
           "name": "Gage Miller",
           "bats": "R",
           "pos": "2B",
@@ -1344,139 +1412,93 @@ const ARM_DATA = {
           }
         },
         {
-          "slot": 6,
-          "name": "Dillon Lewis",
+          "slot": 7,
+          "name": "Fenwick Trimble",
           "bats": "R",
           "pos": "OF",
-          "woba": ".338",
+          "woba": ".343",
           "tier": "med",
           "attack": "Down",
           "avoid": "Up",
           "note": "Most damage up (0.55); coldest down.",
           "zone": {
             "xwobacon": [
-              0.323,
-              0.415,
-              1.109,
-              0.697,
-              0.314,
-              0.179,
-              0.812,
-              0.098,
-              0.377
-            ],
-            "whiff": [
-              13,
-              14,
-              29,
-              18,
-              19,
-              18,
-              12,
-              24,
-              47
-            ],
-            "freq": [
-              12,
-              14,
-              10,
-              10,
-              13,
-              11,
-              5,
-              13,
-              13
-            ]
-          }
-        },
-        {
-          "slot": 7,
-          "name": "Emaarion Boyd",
-          "bats": "R",
-          "pos": "LF",
-          "woba": ".332",
-          "tier": "med",
-          "attack": "Down",
-          "avoid": "Middle",
-          "note": "Most damage middle (0.48); coldest down.",
-          "zone": {
-            "xwobacon": [
-              0.0,
-              0.596,
-              0.355,
-              0.502,
-              0.572,
-              0.25,
-              0.44,
-              0.0,
+              0.483,
+              0.774,
+              0.293,
+              0.427,
+              0.366,
+              0.432,
+              0.442,
+              0.274,
               0.0
             ],
             "whiff": [
-              0,
-              6,
-              8,
-              0,
-              0,
-              27,
-              33,
-              22,
-              9
+              20,
+              41,
+              24,
+              9,
+              20,
+              29,
+              7,
+              9,
+              32
             ],
             "freq": [
-              7,
-              14,
               9,
               13,
+              9,
+              11,
+              17,
+              13,
+              6,
               12,
-              16,
-              7,
-              12,
-              10
+              11
             ]
           }
         },
         {
           "slot": 8,
-          "name": "Ryan Ignoffo",
+          "name": "Dillon Lewis",
           "bats": "R",
-          "pos": "C",
-          "woba": ".327",
+          "pos": "OF",
+          "woba": ".330",
           "tier": "med",
           "attack": "Middle",
-          "avoid": "Down",
-          "note": "Most damage down (0.549); coldest middle.",
+          "avoid": "Up",
+          "note": "Most damage up (0.537); coldest middle.",
           "zone": {
             "xwobacon": [
-              0.532,
-              0.611,
-              0.0,
-              0.417,
-              0.257,
-              0.0,
-              0.519,
-              0.71,
-              0.44
+              0.323,
+              0.415,
+              0.998,
+              0.634,
+              0.269,
+              0.266,
+              0.823,
+              0.347,
+              0.377
             ],
             "whiff": [
               12,
-              9,
-              0,
-              0,
-              13,
+              21,
+              25,
               17,
-              15,
-              14,
-              62
+              17,
+              20,
+              23,
+              21,
+              45
             ],
             "freq": [
-              6,
-              17,
-              14,
-              4,
-              19,
-              12,
+              11,
+              13,
               10,
-              5,
+              9,
+              13,
+              11,
+              6,
+              13,
               13
             ]
           }
@@ -1486,44 +1508,44 @@ const ARM_DATA = {
           "name": "Jay Beshears",
           "bats": "R",
           "pos": "1B",
-          "woba": ".321",
+          "woba": ".320",
           "tier": "med",
           "attack": "Up",
           "avoid": "Middle",
-          "note": "Most damage middle (0.66); coldest up.",
+          "note": "Most damage middle (0.583); coldest up.",
           "zone": {
             "xwobacon": [
               0.0,
-              0.147,
+              0.126,
               0.0,
               0.794,
               0.0,
-              0.602,
-              0.0,
-              0.147,
-              0.772
+              0.648,
+              0.507,
+              0.126,
+              0.661
             ],
             "whiff": [
               25,
               0,
-              45,
-              13,
-              10,
-              29,
+              46,
+              12,
+              12,
+              25,
               0,
-              19,
-              33
+              17,
+              32
             ],
             "freq": [
-              7,
+              6,
               11,
               8,
-              14,
-              15,
-              11,
-              6,
               13,
-              14
+              17,
+              11,
+              7,
+              14,
+              13
             ]
           }
         },
@@ -1532,53 +1554,145 @@ const ARM_DATA = {
           "name": "Aiva Arquette",
           "bats": "R",
           "pos": "SS",
-          "woba": ".320",
-          "tier": "med",
+          "woba": ".308",
+          "tier": "low",
           "attack": "Down",
           "avoid": "Up",
-          "note": "Most damage up (0.677); coldest down.",
+          "note": "Most damage up (0.507); coldest down.",
           "zone": {
             "xwobacon": [
               0.0,
-              1.015,
+              0.812,
               0.0,
               0.88,
-              0.293,
-              0.417,
+              0.352,
+              0.208,
               0.0,
               0.0,
               0.0
             ],
             "whiff": [
               0,
-              12,
+              10,
               25,
-              0,
               14,
-              17,
-              100,
+              11,
+              18,
+              50,
               0,
               50
             ],
             "freq": [
-              11,
-              19,
-              6,
-              13,
-              16,
-              19,
+              9,
+              18,
+              4,
+              12,
+              18,
+              20,
               2,
-              8,
-              6
+              7,
+              9
             ]
           }
         },
         {
           "slot": 11,
+          "name": "Cristian Hern\u00e1ndez",
+          "bats": "R",
+          "pos": "SS",
+          "woba": ".305",
+          "tier": "low",
+          "attack": "Middle",
+          "avoid": "Down",
+          "note": "Most damage down (0.429); coldest middle.",
+          "zone": {
+            "xwobacon": [
+              0.293,
+              0.471,
+              0.176,
+              0.139,
+              0.432,
+              0.428,
+              0.426,
+              0.473,
+              0.352
+            ],
+            "whiff": [
+              27,
+              8,
+              31,
+              14,
+              17,
+              6,
+              9,
+              19,
+              37
+            ],
+            "freq": [
+              7,
+              11,
+              11,
+              10,
+              17,
+              15,
+              6,
+              13,
+              10
+            ]
+          }
+        },
+        {
+          "slot": 12,
+          "name": "Emaarion Boyd",
+          "bats": "R",
+          "pos": "LF",
+          "woba": ".304",
+          "tier": "low",
+          "attack": "Down",
+          "avoid": "Up",
+          "note": "Most damage up (0.409); coldest down.",
+          "zone": {
+            "xwobacon": [
+              0.0,
+              0.477,
+              0.43,
+              0.502,
+              0.449,
+              0.208,
+              0.44,
+              0.0,
+              0.0
+            ],
+            "whiff": [
+              0,
+              10,
+              8,
+              0,
+              0,
+              31,
+              33,
+              20,
+              17
+            ],
+            "freq": [
+              6,
+              15,
+              9,
+              12,
+              14,
+              17,
+              6,
+              12,
+              10
+            ]
+          }
+        },
+        {
+          "slot": 13,
           "name": "Dylan Jasso",
           "bats": "R",
           "pos": "1B",
-          "woba": ".300",
+          "woba": ".296",
           "tier": "low",
           "attack": "Down",
           "avoid": "Up",
@@ -1589,30 +1703,30 @@ const ARM_DATA = {
               0.126,
               0.63,
               0.179,
-              0.293,
+              0.251,
               0.421,
               0.0,
               0.507,
               0.0
             ],
             "whiff": [
-              14,
+              12,
               14,
               32,
               0,
-              10,
+              9,
               10,
               0,
               0,
               40
             ],
             "freq": [
-              7,
+              8,
               13,
               13,
               9,
               19,
-              16,
+              15,
               7,
               8,
               7
@@ -1620,99 +1734,53 @@ const ARM_DATA = {
           }
         },
         {
-          "slot": 12,
-          "name": "Cristian Hern\u00e1ndez",
-          "bats": "R",
-          "pos": "SS",
-          "woba": ".290",
-          "tier": "low",
-          "attack": "Up",
-          "avoid": "Down",
-          "note": "Most damage down (0.46); coldest up.",
-          "zone": {
-            "xwobacon": [
-              0.293,
-              0.434,
-              0.176,
-              0.0,
-              0.432,
-              0.428,
-              0.426,
-              0.43,
-              0.587
-            ],
-            "whiff": [
-              20,
-              4,
-              33,
-              12,
-              16,
-              7,
-              11,
-              17,
-              36
-            ],
-            "freq": [
-              6,
-              12,
-              11,
-              9,
-              18,
-              16,
-              6,
-              14,
-              9
-            ]
-          }
-        },
-        {
-          "slot": 13,
-          "name": "Ian Lewis Jr.",
+          "slot": 14,
+          "name": "Cam Cannarella",
           "bats": "L",
-          "pos": "SS",
-          "woba": ".274",
+          "pos": "OF",
+          "woba": ".285",
           "tier": "low",
-          "attack": "Up",
-          "avoid": "Down",
-          "note": "Most damage down (0.364); coldest up.",
+          "attack": "Middle",
+          "avoid": "Up",
+          "note": "Most damage up (0.502); coldest middle.",
           "zone": {
             "xwobacon": [
-              0.237,
-              0.145,
-              0.345,
+              0.625,
+              0.88,
+              0.293,
               0.0,
-              0.189,
-              0.419,
-              0.557,
-              0.352,
+              0.0,
+              0.22,
+              0.88,
+              0.293,
               0.0
             ],
             "whiff": [
-              7,
-              8,
-              12,
-              13,
-              20,
+              25,
+              43,
               0,
-              30,
-              15,
-              46
+              0,
+              33,
+              0,
+              0,
+              17,
+              0
             ],
             "freq": [
-              13,
-              15,
-              9,
-              11,
-              15,
               14,
-              6,
-              10,
-              8
+              16,
+              9,
+              9,
+              5,
+              12,
+              7,
+              14,
+              12
             ]
           }
         },
         {
-          "slot": 14,
+          "slot": 15,
           "name": "Michael Snyder",
           "bats": "R",
           "pos": "3B",
@@ -1756,6 +1824,98 @@ const ARM_DATA = {
               10
             ]
           }
+        },
+        {
+          "slot": 16,
+          "name": "Ian Lewis Jr.",
+          "bats": "L",
+          "pos": "SS",
+          "woba": ".269",
+          "tier": "low",
+          "attack": "Up",
+          "avoid": "Down",
+          "note": "Most damage down (0.352); coldest up.",
+          "zone": {
+            "xwobacon": [
+              0.237,
+              0.127,
+              0.316,
+              0.0,
+              0.235,
+              0.393,
+              0.557,
+              0.377,
+              0.0
+            ],
+            "whiff": [
+              6,
+              7,
+              11,
+              12,
+              18,
+              0,
+              30,
+              13,
+              47
+            ],
+            "freq": [
+              13,
+              17,
+              9,
+              10,
+              15,
+              13,
+              6,
+              9,
+              9
+            ]
+          }
+        },
+        {
+          "slot": 17,
+          "name": "Connor Caskenette",
+          "bats": "R",
+          "pos": "C",
+          "woba": ".266",
+          "tier": "low",
+          "attack": "Down",
+          "avoid": "Middle",
+          "note": "Most damage middle (0.483); coldest down.",
+          "zone": {
+            "xwobacon": [
+              0.0,
+              0.615,
+              0.0,
+              0.25,
+              1.065,
+              0.0,
+              0.0,
+              0.44,
+              0.0
+            ],
+            "whiff": [
+              0,
+              33,
+              25,
+              0,
+              33,
+              0,
+              0,
+              20,
+              50
+            ],
+            "freq": [
+              11,
+              17,
+              12,
+              12,
+              14,
+              5,
+              6,
+              11,
+              11
+            ]
+          }
         }
       ]
     },
@@ -1768,44 +1928,44 @@ const ARM_DATA = {
           "name": "David McCabe",
           "bats": "L",
           "pos": "3B",
-          "woba": ".406",
+          "woba": ".419",
           "tier": "elite",
           "attack": "Down",
           "avoid": "Up",
-          "note": "Most damage up (0.768); coldest down.",
+          "note": "Most damage up (0.787); coldest down.",
           "zone": {
             "xwobacon": [
               0.934,
-              0.97,
+              0.976,
               0.304,
               0.449,
-              0.802,
-              0.364,
+              0.749,
+              0.449,
               0.176,
-              0.16,
+              0.271,
               0.22
             ],
             "whiff": [
               31,
-              10,
-              17,
+              16,
+              15,
               11,
-              0,
-              17,
+              3,
+              18,
               20,
-              19,
-              41
+              17,
+              35
             ],
             "freq": [
-              10,
               9,
-              11,
-              13,
-              15,
               10,
+              11,
+              12,
+              15,
+              11,
               9,
               12,
-              10
+              11
             ]
           }
         },
@@ -1886,7 +2046,7 @@ const ARM_DATA = {
               7,
               6,
               11,
-              22
+              21
             ],
             "freq": [
               9,
@@ -2041,90 +2201,90 @@ const ARM_DATA = {
         },
         {
           "slot": 7,
-          "name": "Luke Waddell",
-          "bats": "L",
-          "pos": "SS",
-          "woba": ".337",
+          "name": "Archer Brookman",
+          "bats": "R",
+          "pos": "C",
+          "woba": ".331",
           "tier": "med",
-          "attack": "Down",
-          "avoid": "Up",
-          "note": "Most damage up (0.385); coldest down.",
+          "attack": "Up",
+          "avoid": "Down",
+          "note": "Most damage down (0.42); coldest up.",
           "zone": {
             "xwobacon": [
-              0.504,
-              0.408,
-              0.147,
-              0.602,
-              0.158,
-              0.618,
-              0.0,
-              0.135,
-              0.293
+              0.293,
+              0.176,
+              0.293,
+              0.727,
+              0.176,
+              0.391,
+              0.752,
+              0.494,
+              0.126
             ],
             "whiff": [
-              4,
-              5,
-              30,
-              24,
-              11,
-              4,
+              44,
+              25,
               25,
               0,
-              33
+              7,
+              16,
+              0,
+              12,
+              20
             ],
             "freq": [
-              14,
+              7,
+              12,
               10,
-              10,
-              9,
-              18,
+              12,
+              11,
               16,
-              4,
-              9,
-              10
+              5,
+              13,
+              12
             ]
           }
         },
         {
           "slot": 8,
-          "name": "Patrick Clohisy",
+          "name": "Luke Waddell",
           "bats": "L",
-          "pos": "OF",
-          "woba": ".322",
+          "pos": "SS",
+          "woba": ".324",
           "tier": "med",
-          "attack": "Up",
-          "avoid": "Down",
-          "note": "Most damage down (0.566); coldest up.",
+          "attack": "Down",
+          "avoid": "Up",
+          "note": "Most damage up (0.406); coldest down.",
           "zone": {
             "xwobacon": [
-              0.22,
-              0.383,
-              0.208,
-              0.536,
-              0.189,
-              0.375,
-              0.293,
-              0.353,
-              1.302
+              0.538,
+              0.371,
+              0.251,
+              0.43,
+              0.177,
+              0.549,
+              0.0,
+              0.117,
+              0.293
             ],
             "whiff": [
-              35,
-              8,
-              6,
-              12,
-              8,
-              5,
-              12,
-              15,
-              27
+              4,
+              4,
+              29,
+              19,
+              10,
+              3,
+              17,
+              0,
+              28
             ],
             "freq": [
-              12,
-              14,
-              8,
-              14,
-              15,
-              12,
+              13,
+              10,
+              10,
+              10,
+              17,
+              16,
               5,
               10,
               10
@@ -2133,89 +2293,135 @@ const ARM_DATA = {
         },
         {
           "slot": 9,
-          "name": "Archer Brookman",
-          "bats": "R",
-          "pos": "C",
-          "woba": ".313",
-          "tier": "low",
-          "attack": "Up",
+          "name": "Patrick Clohisy",
+          "bats": "L",
+          "pos": "OF",
+          "woba": ".323",
+          "tier": "med",
+          "attack": "Middle",
           "avoid": "Down",
-          "note": "Most damage down (0.358); coldest up.",
+          "note": "Most damage down (0.506); coldest middle.",
           "zone": {
             "xwobacon": [
-              0.0,
-              0.176,
+              0.22,
+              0.383,
+              0.469,
+              0.562,
+              0.216,
+              0.375,
               0.293,
-              0.727,
-              0.196,
-              0.251,
-              0.752,
-              0.364,
-              0.126
+              0.306,
+              1.116
             ],
             "whiff": [
               40,
-              27,
-              25,
-              0,
-              0,
+              11,
+              5,
               18,
-              0,
+              7,
+              8,
+              12,
               14,
-              14
+              24
             ],
             "freq": [
-              6,
-              14,
               12,
-              12,
-              11,
+              13,
+              9,
               15,
-              6,
+              15,
               12,
-              12
+              5,
+              10,
+              10
             ]
           }
         },
         {
           "slot": 10,
+          "name": "Logan Braunschweig",
+          "bats": "L",
+          "pos": "OF",
+          "woba": ".320",
+          "tier": "med",
+          "attack": "Down",
+          "avoid": "Middle",
+          "note": "Most damage middle (0.565); coldest down.",
+          "zone": {
+            "xwobacon": [
+              0.0,
+              0.44,
+              0.44,
+              0.0,
+              0.681,
+              0.44,
+              0.0,
+              0.293,
+              0.25
+            ],
+            "whiff": [
+              25,
+              25,
+              17,
+              50,
+              21,
+              40,
+              67,
+              0,
+              0
+            ],
+            "freq": [
+              10,
+              16,
+              9,
+              13,
+              26,
+              9,
+              6,
+              4,
+              9
+            ]
+          }
+        },
+        {
+          "slot": 11,
           "name": "Ethan Workinger",
           "bats": "R",
           "pos": "CF",
-          "woba": ".286",
+          "woba": ".294",
           "tier": "low",
           "attack": "Down",
           "avoid": "Middle",
-          "note": "Most damage middle (0.366); coldest down.",
+          "note": "Most damage middle (0.377); coldest down.",
           "zone": {
             "xwobacon": [
               0.406,
-              0.196,
+              0.264,
               0.0,
-              0.56,
-              0.237,
-              0.22,
+              0.592,
+              0.274,
+              0.176,
               0.0,
               0.22,
               0.0
             ],
             "whiff": [
-              7,
-              10,
-              18,
-              0,
               6,
-              11,
+              13,
+              23,
+              0,
+              10,
+              10,
               20,
               50,
-              29
+              33
             ],
             "freq": [
-              11,
+              10,
               15,
-              13,
-              13,
               12,
+              13,
+              13,
               9,
               6,
               12,
@@ -2224,139 +2430,185 @@ const ARM_DATA = {
           }
         },
         {
-          "slot": 11,
+          "slot": 12,
           "name": "Ambioris Tavarez",
           "bats": "R",
           "pos": "SS",
-          "woba": ".264",
+          "woba": ".233",
           "tier": "low",
           "attack": "Down",
           "avoid": "Middle",
-          "note": "Most damage middle (0.291); coldest down.",
+          "note": "Most damage middle (0.279); coldest down.",
           "zone": {
             "xwobacon": [
               0.0,
               0.196,
               1.25,
               0.338,
-              0.364,
+              0.323,
               0.196,
               0.0,
-              0.147,
-              0.44
+              0.11,
+              0.293
             ],
             "whiff": [
               0,
-              5,
-              46,
+              9,
+              50,
               0,
-              13,
+              12,
               14,
-              75,
-              36,
+              60,
+              31,
               71
             ],
             "freq": [
-              5,
+              6,
               15,
-              11,
+              10,
               8,
               14,
-              16,
+              15,
               5,
-              12,
+              13,
               15
             ]
           }
         },
         {
-          "slot": 12,
+          "slot": 13,
           "name": "Kevin Kilpatrick Jr.",
           "bats": "R",
           "pos": "OF",
-          "woba": ".249",
+          "woba": ".231",
           "tier": "low",
           "attack": "Down",
           "avoid": "Middle",
-          "note": "Most damage middle (0.504); coldest down.",
+          "note": "Most damage middle (0.486); coldest down.",
           "zone": {
             "xwobacon": [
-              0.293,
-              0.0,
+              0.176,
+              0.126,
               0.352,
               0.693,
-              0.251,
+              0.232,
               0.714,
-              0.293,
+              0.22,
               0.0,
               0.0
             ],
             "whiff": [
-              11,
-              7,
-              35,
-              0,
-              9,
-              20,
+              8,
+              6,
               33,
-              10,
+              8,
+              11,
+              19,
+              29,
+              8,
               25
             ],
             "freq": [
               10,
               11,
-              13,
+              12,
               7,
-              23,
-              15,
-              5,
-              7,
-              9
+              22,
+              14,
+              6,
+              8,
+              10
             ]
           }
         },
         {
-          "slot": 13,
+          "slot": 14,
           "name": "Drew Compton",
           "bats": "L",
           "pos": "3B",
-          "woba": ".219",
+          "woba": ".223",
           "tier": "low",
           "attack": "Up",
           "avoid": "Middle",
-          "note": "Most damage middle (0.319); coldest up.",
+          "note": "Most damage middle (0.346); coldest up.",
           "zone": {
             "xwobacon": [
               0.22,
-              0.16,
-              0.11,
-              0.377,
-              0.315,
-              0.25,
-              0.316,
-              0.22,
+              0.147,
+              0.088,
+              0.44,
+              0.349,
+              0.208,
+              0.263,
+              0.196,
               0.0
             ],
             "whiff": [
               0,
+              20,
               14,
-              17,
-              25,
-              4,
+              27,
+              3,
               0,
-              30,
-              35,
-              20
+              27,
+              37,
+              18
             ],
             "freq": [
-              7,
+              6,
               14,
               8,
               10,
-              15,
-              12,
+              18,
+              11,
+              8,
+              13,
+              11
+            ]
+          }
+        },
+        {
+          "slot": 15,
+          "name": "Tyler Tolve",
+          "bats": "L",
+          "pos": "C",
+          "woba": ".092",
+          "tier": "low",
+          "attack": "Down",
+          "avoid": "Middle",
+          "note": "Most damage middle (0.355); coldest down.",
+          "zone": {
+            "xwobacon": [
+              0.0,
+              0.0,
+              0.0,
+              0.22,
+              0.0,
+              0.625,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "whiff": [
+              40,
+              50,
+              100,
+              25,
+              80,
+              40,
+              50,
+              50,
+              0
+            ],
+            "freq": [
+              18,
               9,
-              14,
+              4,
+              16,
+              12,
+              11,
+              7,
+              12,
               11
             ]
           }
@@ -2372,43 +2624,43 @@ const ARM_DATA = {
           "name": "Carlos Jorge",
           "bats": "L",
           "pos": "SS",
-          "woba": ".432",
+          "woba": ".408",
           "tier": "elite",
           "attack": "Down",
           "avoid": "Middle",
-          "note": "Most damage middle (0.541); coldest down.",
+          "note": "Most damage middle (0.529); coldest down.",
           "zone": {
             "xwobacon": [
               0.587,
-              0.455,
+              0.497,
               0.492,
               0.176,
-              0.625,
-              0.611,
+              0.594,
+              0.59,
               0.0,
-              0.251,
-              0.705
+              0.22,
+              0.651
             ],
             "whiff": [
-              24,
-              17,
+              26,
+              18,
               12,
-              28,
+              26,
               0,
-              17,
-              0,
-              8,
-              6
+              16,
+              11,
+              12,
+              12
             ],
             "freq": [
               11,
-              19,
+              17,
               10,
-              11,
-              9,
+              10,
+              10,
               16,
               5,
-              9,
+              10,
               11
             ]
           }
@@ -2418,44 +2670,44 @@ const ARM_DATA = {
           "name": "Jay Allen II",
           "bats": "R",
           "pos": "OF",
-          "woba": ".373",
+          "woba": ".370",
           "tier": "high",
           "attack": "Middle",
           "avoid": "Down",
-          "note": "Most damage down (0.53); coldest middle.",
+          "note": "Most damage down (0.496); coldest middle.",
           "zone": {
             "xwobacon": [
-              0.502,
-              0.648,
-              0.293,
+              0.486,
+              0.602,
+              0.22,
               0.58,
-              0.468,
+              0.576,
               0.0,
               0.88,
-              0.627,
-              0.176
+              0.575,
+              0.251
             ],
             "whiff": [
-              7,
-              20,
-              43,
-              11,
+              5,
+              21,
+              33,
+              10,
               0,
-              24,
+              21,
               14,
-              17,
-              25
+              24,
+              22
             ],
             "freq": [
+              8,
+              11,
               7,
-              13,
-              7,
-              6,
-              19,
-              14,
               5,
-              13,
-              17
+              20,
+              17,
+              4,
+              12,
+              15
             ]
           }
         },
@@ -2473,7 +2725,7 @@ const ARM_DATA = {
             "xwobacon": [
               0.22,
               0.52,
-              0.587,
+              0.44,
               0.44,
               0.416,
               0.56,
@@ -2484,7 +2736,7 @@ const ARM_DATA = {
             "whiff": [
               9,
               29,
-              25,
+              24,
               22,
               22,
               7,
@@ -2495,7 +2747,7 @@ const ARM_DATA = {
             "freq": [
               9,
               11,
-              11,
+              12,
               10,
               15,
               10,
@@ -2510,43 +2762,43 @@ const ARM_DATA = {
           "name": "Leo Balcazar",
           "bats": "R",
           "pos": "SS",
-          "woba": ".341",
+          "woba": ".344",
           "tier": "med",
           "attack": "Up",
           "avoid": "Middle",
-          "note": "Most damage middle (0.532); coldest up.",
+          "note": "Most damage middle (0.511); coldest up.",
           "zone": {
             "xwobacon": [
+              0.377,
               0.176,
-              0.11,
-              0.948,
-              0.528,
-              0.566,
-              0.455,
+              0.758,
+              0.584,
+              0.531,
+              0.423,
               0.56,
-              0.462,
-              0.16
+              0.48,
+              0.135
             ],
             "whiff": [
-              9,
-              35,
-              29,
-              9,
-              0,
               7,
+              32,
+              30,
+              7,
+              0,
               6,
-              26,
-              5
+              11,
+              22,
+              13
             ],
             "freq": [
               10,
-              12,
               11,
-              7,
-              14,
-              15,
-              7,
               12,
+              8,
+              14,
+              14,
+              6,
+              13,
               12
             ]
           }
@@ -2556,95 +2808,49 @@ const ARM_DATA = {
           "name": "Ruben Ibarra",
           "bats": "R",
           "pos": "1B",
-          "woba": ".319",
+          "woba": ".316",
           "tier": "low",
-          "attack": "Middle",
+          "attack": "Down",
           "avoid": "Up",
-          "note": "Most damage up (0.657); coldest middle.",
+          "note": "Most damage up (0.534); coldest down.",
           "zone": {
             "xwobacon": [
-              0.0,
-              0.74,
+              0.293,
+              0.476,
               0.727,
               0.293,
-              0.252,
-              0.377,
+              0.312,
+              0.44,
               0.0,
-              0.196,
+              0.22,
               0.486
             ],
             "whiff": [
-              30,
-              8,
+              27,
+              6,
               28,
-              12,
-              12,
-              36,
-              38,
-              18,
-              27
+              17,
+              11,
+              37,
+              40,
+              15,
+              25
             ],
             "freq": [
               8,
-              13,
-              8,
+              15,
+              7,
               8,
               18,
-              13,
-              5,
+              12,
+              6,
               11,
-              16
+              14
             ]
           }
         },
         {
           "slot": 6,
-          "name": "Cade Hunter",
-          "bats": "L",
-          "pos": "C",
-          "woba": ".314",
-          "tier": "low",
-          "attack": "Middle",
-          "avoid": "Up",
-          "note": "Most damage up (0.477); coldest middle.",
-          "zone": {
-            "xwobacon": [
-              0.88,
-              0.432,
-              0.0,
-              0.33,
-              0.558,
-              0.098,
-              0.0,
-              0.648,
-              0.44
-            ],
-            "whiff": [
-              45,
-              8,
-              0,
-              19,
-              17,
-              12,
-              43,
-              24,
-              64
-            ],
-            "freq": [
-              8,
-              16,
-              7,
-              11,
-              18,
-              11,
-              8,
-              12,
-              11
-            ]
-          }
-        },
-        {
-          "slot": 7,
           "name": "Alexander Vargas",
           "bats": "L",
           "pos": "SS",
@@ -2690,48 +2896,94 @@ const ARM_DATA = {
           }
         },
         {
-          "slot": 8,
-          "name": "Cam Collier",
+          "slot": 7,
+          "name": "Cade Hunter",
           "bats": "L",
-          "pos": "3B",
-          "woba": ".306",
+          "pos": "C",
+          "woba": ".307",
           "tier": "low",
-          "attack": "Up",
-          "avoid": "Middle",
-          "note": "Most damage middle (0.472); coldest up.",
+          "attack": "Down",
+          "avoid": "Up",
+          "note": "Most damage up (0.435); coldest down.",
           "zone": {
             "xwobacon": [
+              0.44,
+              0.432,
+              0.44,
+              0.432,
+              0.612,
+              0.088,
               0.0,
-              0.398,
-              0.0,
-              0.755,
-              0.331,
-              0.423,
-              0.293,
-              0.416,
-              0.451
+              0.556,
+              0.44
             ],
             "whiff": [
-              39,
-              11,
-              24,
-              13,
+              42,
+              15,
+              0,
+              20,
               18,
-              7,
-              6,
-              3,
-              9
+              11,
+              38,
+              23,
+              57
             ],
             "freq": [
-              9,
-              14,
-              9,
-              10,
+              7,
               15,
-              12,
-              9,
+              7,
               11,
-              10
+              18,
+              10,
+              8,
+              13,
+              11
+            ]
+          }
+        },
+        {
+          "slot": 8,
+          "name": "Ryan McCrystal",
+          "bats": "L",
+          "pos": "C",
+          "woba": ".305",
+          "tier": "low",
+          "attack": "Up",
+          "avoid": "Down",
+          "note": "Most damage down (0.539); coldest up.",
+          "zone": {
+            "xwobacon": [
+              0.88,
+              0.0,
+              0.0,
+              0.528,
+              0.547,
+              0.0,
+              0.293,
+              0.82,
+              0.483
+            ],
+            "whiff": [
+              57,
+              47,
+              33,
+              18,
+              8,
+              8,
+              0,
+              23,
+              8
+            ],
+            "freq": [
+              11,
+              15,
+              6,
+              12,
+              12,
+              10,
+              7,
+              16,
+              12
             ]
           }
         },
@@ -2749,7 +3001,7 @@ const ARM_DATA = {
             "xwobacon": [
               0.0,
               0.417,
-              0.0,
+              0.417,
               0.832,
               1.25,
               0.0,
@@ -2760,7 +3012,7 @@ const ARM_DATA = {
             "whiff": [
               0,
               14,
-              17,
+              14,
               12,
               20,
               67,
@@ -2771,59 +3023,59 @@ const ARM_DATA = {
             "freq": [
               8,
               15,
-              8,
+              9,
               12,
               14,
               14,
               5,
               14,
-              10
+              9
             ]
           }
         },
         {
           "slot": 10,
-          "name": "Ryan McCrystal",
+          "name": "Cam Collier",
           "bats": "L",
-          "pos": "C",
-          "woba": ".301",
+          "pos": "3B",
+          "woba": ".303",
           "tier": "low",
           "attack": "Up",
-          "avoid": "Down",
-          "note": "Most damage down (0.512); coldest up.",
+          "avoid": "Middle",
+          "note": "Most damage middle (0.47); coldest up.",
           "zone": {
             "xwobacon": [
-              0.88,
               0.0,
+              0.398,
               0.0,
-              0.66,
-              0.312,
-              0.0,
-              0.293,
-              0.82,
-              0.417
+              0.697,
+              0.358,
+              0.423,
+              0.334,
+              0.462,
+              0.451
             ],
             "whiff": [
-              25,
-              50,
-              40,
-              12,
-              12,
+              41,
+              11,
+              24,
+              16,
               17,
-              0,
-              20,
-              11
+              7,
+              5,
+              3,
+              9
             ],
             "freq": [
               9,
-              15,
-              7,
               13,
-              11,
-              7,
-              8,
-              18,
-              11
+              10,
+              10,
+              15,
+              12,
+              9,
+              12,
+              10
             ]
           }
         },
@@ -2878,7 +3130,7 @@ const ARM_DATA = {
           "name": "Dominic Pitelli",
           "bats": "L",
           "pos": "SS",
-          "woba": ".287",
+          "woba": ".280",
           "tier": "low",
           "attack": "Down",
           "avoid": "Up",
@@ -2897,8 +3149,8 @@ const ARM_DATA = {
             ],
             "whiff": [
               20,
-              23,
-              7,
+              21,
+              6,
               0,
               12,
               0,
@@ -2909,12 +3161,12 @@ const ARM_DATA = {
             "freq": [
               11,
               12,
-              13,
-              9,
               14,
               9,
-              7,
-              12,
+              13,
+              10,
+              6,
+              13,
               13
             ]
           }
@@ -2970,44 +3222,44 @@ const ARM_DATA = {
           "name": "Zavier Warren",
           "bats": "L",
           "pos": "1B",
-          "woba": ".258",
+          "woba": ".269",
           "tier": "low",
-          "attack": "Middle",
+          "attack": "Up",
           "avoid": "Down",
-          "note": "Most damage down (0.406); coldest middle.",
+          "note": "Most damage down (0.406); coldest up.",
           "zone": {
             "xwobacon": [
-              0.312,
-              0.426,
+              0.208,
+              0.43,
               0.0,
               0.251,
-              0.379,
-              0.196,
+              0.529,
+              0.304,
               0.44,
               0.352,
               0.451
             ],
             "whiff": [
-              36,
-              28,
+              31,
+              24,
               22,
               12,
-              22,
-              17,
-              17,
-              21,
+              23,
+              19,
+              29,
+              20,
               9
             ],
             "freq": [
-              10,
               11,
-              6,
+              11,
+              5,
               13,
-              12,
+              13,
               14,
-              8,
-              12,
-              15
+              9,
+              11,
+              14
             ]
           }
         }
@@ -3022,33 +3274,33 @@ const ARM_DATA = {
           "name": "Darrien Miller",
           "bats": "L",
           "pos": "C",
-          "woba": ".476",
+          "woba": ".464",
           "tier": "elite",
           "attack": "Down",
           "avoid": "Middle",
-          "note": "Most damage middle (0.775); coldest down.",
+          "note": "Most damage middle (0.732); coldest down.",
           "zone": {
             "xwobacon": [
-              0.406,
-              0.376,
+              0.338,
+              0.432,
               0.0,
-              0.744,
-              0.861,
-              0.44,
+              0.795,
+              0.789,
               0.293,
-              0.176,
+              0.293,
+              0.147,
               0.0
             ],
             "whiff": [
-              27,
-              20,
-              10,
+              25,
+              18,
+              9,
               11,
+              12,
+              0,
+              12,
               13,
-              0,
-              14,
-              0,
-              14
+              12
             ],
             "freq": [
               8,
@@ -3056,9 +3308,9 @@ const ARM_DATA = {
               10,
               10,
               19,
-              15,
+              14,
               6,
-              9,
+              10,
               9
             ]
           }
@@ -3114,43 +3366,43 @@ const ARM_DATA = {
           "name": "Blake Burke",
           "bats": "L",
           "pos": "1B",
-          "woba": ".400",
+          "woba": ".392",
           "tier": "elite",
           "attack": "Down",
           "avoid": "Middle",
-          "note": "Most damage middle (0.602); coldest down.",
+          "note": "Most damage middle (0.621); coldest down.",
           "zone": {
             "xwobacon": [
               0.774,
-              0.254,
+              0.298,
               0.507,
-              0.36,
-              0.958,
-              0.529,
-              0.477,
+              0.37,
+              1.056,
+              0.482,
+              0.469,
               0.336,
-              0.0
+              0.312
             ],
             "whiff": [
-              19,
               35,
-              39,
-              15,
+              32,
+              38,
+              14,
               12,
-              8,
-              21,
-              9,
-              29
+              6,
+              28,
+              12,
+              25
             ],
             "freq": [
-              10,
+              12,
+              13,
+              9,
+              11,
+              14,
               13,
               10,
               11,
-              13,
-              13,
-              10,
-              12,
               8
             ]
           }
@@ -3206,42 +3458,42 @@ const ARM_DATA = {
           "name": "Matthew Wood",
           "bats": "L",
           "pos": "C",
-          "woba": ".378",
-          "tier": "high",
+          "woba": ".353",
+          "tier": "med",
           "attack": "Up",
           "avoid": "Middle",
-          "note": "Most damage middle (0.452); coldest up.",
+          "note": "Most damage middle (0.381); coldest up.",
           "zone": {
             "xwobacon": [
-              0.22,
-              0.351,
-              0.293,
-              0.088,
-              0.721,
-              0.494,
+              0.355,
+              0.273,
+              0.251,
+              0.068,
+              0.665,
+              0.412,
               0.0,
-              0.139,
+              0.114,
               0.516
             ],
             "whiff": [
-              14,
+              12,
               0,
-              21,
-              14,
-              10,
-              6,
-              20,
-              8,
-              5
+              25,
+              12,
+              12,
+              5,
+              18,
+              7,
+              9
             ],
             "freq": [
-              10,
               11,
-              11,
-              14,
-              13,
               12,
-              7,
+              10,
+              15,
+              13,
+              11,
+              6,
               10,
               13
             ]
@@ -3252,11 +3504,11 @@ const ARM_DATA = {
           "name": "Dylan O'Rae",
           "bats": "L",
           "pos": "SS",
-          "woba": ".350",
+          "woba": ".345",
           "tier": "med",
           "attack": "Down",
           "avoid": "Middle",
-          "note": "Most damage middle (0.416); coldest down.",
+          "note": "Most damage middle (0.407); coldest down.",
           "zone": {
             "xwobacon": [
               0.602,
@@ -3264,10 +3516,10 @@ const ARM_DATA = {
               0.377,
               0.264,
               0.367,
-              0.611,
+              0.571,
               0.176,
               0.203,
-              0.266
+              0.237
             ],
             "whiff": [
               6,
@@ -3275,20 +3527,20 @@ const ARM_DATA = {
               0,
               4,
               3,
-              10,
+              9,
               22,
               5,
-              20
+              19
             ],
             "freq": [
               9,
-              14,
+              15,
               11,
               11,
               16,
               13,
               5,
-              9,
+              10,
               11
             ]
           }
@@ -3298,44 +3550,44 @@ const ARM_DATA = {
           "name": "Jes\u00fas Made",
           "bats": "L",
           "pos": "SS",
-          "woba": ".326",
+          "woba": ".329",
           "tier": "med",
           "attack": "Down",
           "avoid": "Up",
-          "note": "Most damage up (0.408); coldest down.",
+          "note": "Most damage up (0.41); coldest down.",
           "zone": {
             "xwobacon": [
               0.609,
-              0.462,
+              0.459,
               0.203,
-              0.401,
-              0.317,
-              0.597,
-              0.068,
-              0.232,
+              0.376,
+              0.338,
+              0.568,
+              0.142,
+              0.242,
               0.902
             ],
             "whiff": [
-              11,
-              21,
-              8,
-              0,
-              16,
-              16,
+              17,
+              17,
               13,
-              11,
+              0,
+              12,
+              14,
+              12,
+              12,
               13
             ],
             "freq": [
-              10,
+              11,
               11,
               7,
-              14,
+              13,
               15,
-              10,
-              14,
+              9,
+              13,
               12,
-              8
+              7
             ]
           }
         },
@@ -3344,41 +3596,41 @@ const ARM_DATA = {
           "name": "Mike Boeve",
           "bats": "L",
           "pos": "3B",
-          "woba": ".312",
-          "tier": "low",
+          "woba": ".320",
+          "tier": "med",
           "attack": "Up",
           "avoid": "Down",
-          "note": "Most damage down (0.441); coldest up.",
+          "note": "Most damage down (0.426); coldest up.",
           "zone": {
             "xwobacon": [
               0.0,
-              0.176,
+              0.16,
               0.379,
-              0.33,
-              0.395,
+              0.367,
+              0.425,
+              0.377,
               0.352,
-              0.587,
-              0.447,
-              0.355
+              0.498,
+              0.304
             ],
             "whiff": [
-              67,
-              8,
+              57,
+              7,
               0,
-              22,
-              18,
-              25,
-              12,
-              12,
-              10
+              17,
+              17,
+              23,
+              10,
+              10,
+              8
             ],
             "freq": [
-              8,
-              13,
               9,
-              15,
-              17,
               12,
+              9,
+              16,
+              16,
+              13,
               6,
               13,
               6
@@ -3390,60 +3642,152 @@ const ARM_DATA = {
           "name": "Mark Coley II",
           "bats": "R",
           "pos": "OF",
-          "woba": ".285",
+          "woba": ".313",
           "tier": "low",
           "attack": "Up",
           "avoid": "Down",
-          "note": "Most damage down (0.547); coldest up.",
+          "note": "Most damage down (0.504); coldest up.",
           "zone": {
             "xwobacon": [
-              0.208,
+              0.179,
               0.44,
               0.0,
-              0.22,
-              0.44,
-              0.22,
+              0.176,
+              0.68,
+              0.251,
               0.0,
-              0.312,
-              2.03
+              0.304,
+              1.455
             ],
             "whiff": [
-              8,
+              13,
               24,
-              20,
-              10,
+              25,
+              8,
               21,
-              36,
-              17,
-              18,
-              0
+              27,
+              29,
+              25,
+              11
             ],
             "freq": [
-              11,
-              18,
-              11,
+              10,
+              17,
+              10,
               10,
               15,
-              9,
-              7,
               11,
-              8
+              6,
+              12,
+              9
             ]
           }
         },
         {
           "slot": 10,
+          "name": "Eduardo Garcia",
+          "bats": "R",
+          "pos": "SS",
+          "woba": ".289",
+          "tier": "low",
+          "attack": "Up",
+          "avoid": "Middle",
+          "note": "Most damage middle (0.447); coldest up.",
+          "zone": {
+            "xwobacon": [
+              0.0,
+              0.0,
+              0.22,
+              0.556,
+              0.462,
+              0.352,
+              0.528,
+              0.24,
+              0.259
+            ],
+            "whiff": [
+              50,
+              19,
+              12,
+              11,
+              15,
+              11,
+              22,
+              16,
+              18
+            ],
+            "freq": [
+              8,
+              15,
+              7,
+              10,
+              14,
+              13,
+              7,
+              13,
+              15
+            ]
+          }
+        },
+        {
+          "slot": 11,
+          "name": "Eric Brown Jr.",
+          "bats": "R",
+          "pos": "SS",
+          "woba": ".271",
+          "tier": "low",
+          "attack": "Up",
+          "avoid": "Down",
+          "note": "Most damage down (0.324); coldest up.",
+          "zone": {
+            "xwobacon": [
+              0.126,
+              0.251,
+              0.79,
+              0.0,
+              0.378,
+              0.293,
+              0.25,
+              0.176,
+              0.88
+            ],
+            "whiff": [
+              8,
+              15,
+              0,
+              0,
+              6,
+              11,
+              0,
+              22,
+              62
+            ],
+            "freq": [
+              10,
+              15,
+              8,
+              8,
+              17,
+              12,
+              9,
+              11,
+              10
+            ]
+          }
+        },
+        {
+          "slot": 12,
           "name": "Dasan Brown",
           "bats": "R",
           "pos": "CF",
-          "woba": ".281",
+          "woba": ".271",
           "tier": "low",
           "attack": "Up",
           "avoid": "Middle",
           "note": "Most damage middle (0.306); coldest up.",
           "zone": {
             "xwobacon": [
-              0.16,
+              0.135,
               0.334,
               0.0,
               0.264,
@@ -3454,118 +3798,26 @@ const ARM_DATA = {
               0.0
             ],
             "whiff": [
+              17,
               19,
-              15,
               50,
               16,
-              19,
-              46,
+              23,
+              50,
               18,
               29,
-              38
+              44
             ],
             "freq": [
               11,
-              13,
-              7,
+              14,
+              8,
               11,
               11,
               13,
               8,
-              13,
+              12,
               13
-            ]
-          }
-        },
-        {
-          "slot": 11,
-          "name": "Eduardo Garcia",
-          "bats": "R",
-          "pos": "SS",
-          "woba": ".279",
-          "tier": "low",
-          "attack": "Up",
-          "avoid": "Middle",
-          "note": "Most damage middle (0.401); coldest up.",
-          "zone": {
-            "xwobacon": [
-              0.0,
-              0.0,
-              0.293,
-              0.352,
-              0.462,
-              0.352,
-              0.293,
-              0.33,
-              0.251
-            ],
-            "whiff": [
-              40,
-              11,
-              14,
-              17,
-              15,
-              6,
-              20,
-              16,
-              20
-            ],
-            "freq": [
-              7,
-              15,
-              7,
-              9,
-              12,
-              14,
-              7,
-              12,
-              16
-            ]
-          }
-        },
-        {
-          "slot": 12,
-          "name": "Eric Brown Jr.",
-          "bats": "R",
-          "pos": "SS",
-          "woba": ".277",
-          "tier": "low",
-          "attack": "Up",
-          "avoid": "Down",
-          "note": "Most damage down (0.324); coldest up.",
-          "zone": {
-            "xwobacon": [
-              0.147,
-              0.293,
-              0.0,
-              0.0,
-              0.462,
-              0.0,
-              0.25,
-              0.176,
-              0.88
-            ],
-            "whiff": [
-              10,
-              17,
-              0,
-              0,
-              7,
-              0,
-              0,
-              22,
-              57
-            ],
-            "freq": [
-              9,
-              17,
-              6,
-              8,
-              18,
-              11,
-              11,
-              11,
-              9
             ]
           }
         },
@@ -3574,44 +3826,44 @@ const ARM_DATA = {
           "name": "Jheremy Vargas",
           "bats": "R",
           "pos": "SS",
-          "woba": ".269",
+          "woba": ".248",
           "tier": "low",
           "attack": "Down",
-          "avoid": "Up",
-          "note": "Most damage up (0.301); coldest down.",
+          "avoid": "Middle",
+          "note": "Most damage middle (0.215); coldest down.",
           "zone": {
             "xwobacon": [
-              0.22,
-              0.532,
+              0.147,
+              0.304,
               0.0,
               0.293,
-              0.0,
-              0.25,
-              0.44,
+              0.176,
+              0.208,
+              0.293,
               0.0,
               0.0
             ],
             "whiff": [
               0,
-              25,
+              17,
+              0,
+              17,
               0,
               0,
               0,
               0,
-              0,
-              0,
-              50
+              60
             ],
             "freq": [
-              11,
+              9,
               18,
-              18,
-              8,
-              8,
-              18,
+              17,
+              7,
+              9,
+              15,
               5,
-              8,
-              8
+              7,
+              12
             ]
           }
         },
@@ -3669,44 +3921,90 @@ const ARM_DATA = {
       "hitters": [
         {
           "slot": 1,
+          "name": "Owen Ayers",
+          "bats": "L",
+          "pos": "C",
+          "woba": ".456",
+          "tier": "elite",
+          "attack": "Up",
+          "avoid": "Middle",
+          "note": "Most damage middle (0.767); coldest up.",
+          "zone": {
+            "xwobacon": [
+              0.0,
+              0.33,
+              0.706,
+              0.97,
+              0.643,
+              0.826,
+              0.44,
+              0.426,
+              0.732
+            ],
+            "whiff": [
+              28,
+              19,
+              12,
+              25,
+              7,
+              15,
+              29,
+              21,
+              0
+            ],
+            "freq": [
+              15,
+              11,
+              6,
+              14,
+              13,
+              13,
+              7,
+              11,
+              9
+            ]
+          }
+        },
+        {
+          "slot": 2,
           "name": "Andy Garriola",
           "bats": "R",
           "pos": "OF",
-          "woba": ".405",
+          "woba": ".387",
           "tier": "elite",
           "attack": "Up",
           "avoid": "Down",
-          "note": "Most damage down (0.652); coldest up.",
+          "note": "Most damage down (0.607); coldest up.",
           "zone": {
             "xwobacon": [
+              0.293,
+              0.582,
               0.352,
-              0.58,
-              0.44,
-              0.176,
-              0.786,
-              0.355,
-              1.093,
-              0.421,
-              0.778
+              0.485,
+              0.544,
+              0.462,
+              0.82,
+              0.504,
+              0.625
             ],
             "whiff": [
-              43,
-              19,
-              27,
+              41,
+              20,
+              31,
               0,
-              21,
-              21,
+              26,
+              18,
               0,
               35,
-              7
+              15
             ],
             "freq": [
               8,
-              16,
+              14,
               7,
               6,
               14,
-              15,
+              16,
               6,
               14,
               14
@@ -3714,53 +4012,191 @@ const ARM_DATA = {
           }
         },
         {
-          "slot": 2,
-          "name": "Owen Ayers",
+          "slot": 3,
+          "name": "Hayden Cantrelle",
           "bats": "L",
-          "pos": "C",
-          "woba": ".386",
+          "pos": "2B",
+          "woba": ".385",
           "tier": "elite",
           "attack": "Up",
-          "avoid": "Middle",
-          "note": "Most damage middle (0.663); coldest up.",
+          "avoid": "Down",
+          "note": "Most damage down (0.503); coldest up.",
           "zone": {
             "xwobacon": [
               0.0,
-              0.147,
-              0.706,
+              0.334,
+              0.176,
               0.44,
-              0.677,
-              0.699,
-              0.293,
-              0.22,
-              0.948
+              0.459,
+              0.417,
+              0.44,
+              0.0,
+              0.88
             ],
             "whiff": [
-              31,
-              19,
-              15,
-              23,
-              9,
-              18,
-              25,
-              28,
-              0
+              43,
+              11,
+              7,
+              12,
+              26,
+              6,
+              0,
+              44,
+              25
             ],
             "freq": [
-              16,
               10,
+              15,
+              10,
+              12,
+              15,
+              12,
               7,
-              14,
-              14,
-              13,
-              7,
-              11,
-              8
+              8,
+              9
             ]
           }
         },
         {
-          "slot": 3,
+          "slot": 4,
+          "name": "Cameron Sisneros",
+          "bats": "L",
+          "pos": "1B",
+          "woba": ".378",
+          "tier": "high",
+          "attack": "Down",
+          "avoid": "Middle",
+          "note": "Most damage middle (0.421); coldest down.",
+          "zone": {
+            "xwobacon": [
+              0.88,
+              0.293,
+              0.0,
+              0.293,
+              0.293,
+              0.677,
+              0.0,
+              0.22,
+              0.0
+            ],
+            "whiff": [
+              67,
+              0,
+              0,
+              0,
+              33,
+              0,
+              50,
+              0,
+              33
+            ],
+            "freq": [
+              8,
+              13,
+              10,
+              13,
+              13,
+              14,
+              6,
+              11,
+              13
+            ]
+          }
+        },
+        {
+          "slot": 5,
+          "name": "Jefferson Rojas",
+          "bats": "R",
+          "pos": "SS",
+          "woba": ".368",
+          "tier": "high",
+          "attack": "Down",
+          "avoid": "Middle",
+          "note": "Most damage middle (0.536); coldest down.",
+          "zone": {
+            "xwobacon": [
+              0.793,
+              0.504,
+              0.304,
+              0.63,
+              0.404,
+              0.661,
+              0.0,
+              0.29,
+              0.147
+            ],
+            "whiff": [
+              0,
+              12,
+              14,
+              5,
+              8,
+              18,
+              45,
+              16,
+              32
+            ],
+            "freq": [
+              7,
+              17,
+              6,
+              10,
+              16,
+              14,
+              6,
+              10,
+              15
+            ]
+          }
+        },
+        {
+          "slot": 6,
+          "name": "Carter Trice",
+          "bats": "R",
+          "pos": "2B",
+          "woba": ".345",
+          "tier": "med",
+          "attack": "Middle",
+          "avoid": "Down",
+          "note": "Most damage down (0.518); coldest middle.",
+          "zone": {
+            "xwobacon": [
+              0.423,
+              0.512,
+              0.379,
+              0.42,
+              0.461,
+              0.419,
+              0.832,
+              0.531,
+              0.176
+            ],
+            "whiff": [
+              9,
+              29,
+              29,
+              10,
+              12,
+              15,
+              15,
+              22,
+              53
+            ],
+            "freq": [
+              8,
+              14,
+              9,
+              10,
+              16,
+              14,
+              7,
+              12,
+              10
+            ]
+          }
+        },
+        {
+          "slot": 7,
           "name": "Jordan Nwogu",
           "bats": "R",
           "pos": "OF",
@@ -3806,283 +4242,145 @@ const ARM_DATA = {
           }
         },
         {
-          "slot": 4,
-          "name": "Edgar Alvarez",
-          "bats": "L",
-          "pos": "1B",
-          "woba": ".336",
-          "tier": "med",
-          "attack": "Middle",
-          "avoid": "Up",
-          "note": "Most damage up (0.502); coldest middle.",
-          "zone": {
-            "xwobacon": [
-              0.71,
-              0.752,
-              0.176,
-              0.0,
-              0.0,
-              0.354,
-              0.0,
-              0.572,
-              0.355
-            ],
-            "whiff": [
-              40,
-              55,
-              54,
-              32,
-              0,
-              21,
-              33,
-              4,
-              22
-            ],
-            "freq": [
-              9,
-              9,
-              10,
-              12,
-              10,
-              14,
-              8,
-              14,
-              14
-            ]
-          }
-        },
-        {
-          "slot": 5,
-          "name": "Carter Trice",
-          "bats": "R",
-          "pos": "2B",
-          "woba": ".334",
-          "tier": "med",
-          "attack": "Middle",
-          "avoid": "Down",
-          "note": "Most damage down (0.588); coldest middle.",
-          "zone": {
-            "xwobacon": [
-              0.458,
-              0.598,
-              0.421,
-              0.237,
-              0.493,
-              0.416,
-              0.832,
-              0.551,
-              0.293
-            ],
-            "whiff": [
-              11,
-              30,
-              33,
-              12,
-              11,
-              14,
-              15,
-              25,
-              60
-            ],
-            "freq": [
-              8,
-              14,
-              9,
-              11,
-              17,
-              12,
-              8,
-              12,
-              9
-            ]
-          }
-        },
-        {
-          "slot": 6,
-          "name": "Jefferson Rojas",
-          "bats": "R",
-          "pos": "SS",
-          "woba": ".333",
-          "tier": "med",
-          "attack": "Down",
-          "avoid": "Up",
-          "note": "Most damage up (0.534); coldest down.",
-          "zone": {
-            "xwobacon": [
-              0.934,
-              0.511,
-              0.304,
-              0.43,
-              0.215,
-              0.565,
-              0.0,
-              0.29,
-              0.196
-            ],
-            "whiff": [
-              0,
-              12,
-              17,
-              6,
-              9,
-              21,
-              40,
-              16,
-              38
-            ],
-            "freq": [
-              6,
-              16,
-              6,
-              11,
-              16,
-              13,
-              6,
-              12,
-              15
-            ]
-          }
-        },
-        {
-          "slot": 7,
+          "slot": 8,
           "name": "Alex Ram\u00edrez",
           "bats": "R",
           "pos": "OF",
-          "woba": ".323",
+          "woba": ".327",
           "tier": "med",
           "attack": "Down",
           "avoid": "Up",
-          "note": "Most damage up (0.542); coldest down.",
+          "note": "Most damage up (0.643); coldest down.",
           "zone": {
             "xwobacon": [
-              0.22,
-              0.732,
-              0.597,
-              0.243,
-              0.454,
-              0.502,
+              0.529,
+              0.671,
+              0.721,
+              0.251,
+              0.363,
               0.486,
-              0.196,
-              0.293
+              0.432,
+              0.176,
+              0.24
             ],
             "whiff": [
-              18,
-              10,
-              0,
-              14,
-              8,
-              33,
-              12,
-              0,
-              38
-            ],
-            "freq": [
-              9,
-              10,
-              6,
-              12,
-              14,
-              13,
-              7,
-              9,
-              19
-            ]
-          }
-        },
-        {
-          "slot": 8,
-          "name": "Karson Simas",
-          "bats": "R",
-          "pos": "SS",
-          "woba": ".314",
-          "tier": "low",
-          "attack": "Down",
-          "avoid": "Middle",
-          "note": "Most damage middle (0.46); coldest down.",
-          "zone": {
-            "xwobacon": [
-              0.293,
-              0.352,
-              0.88,
-              0.662,
-              0.324,
-              0.371,
-              0.0,
-              0.334,
-              0.352
-            ],
-            "whiff": [
-              29,
-              24,
-              29,
+              17,
+              16,
               0,
               15,
-              5,
-              17,
-              5,
-              8
+              11,
+              32,
+              11,
+              0,
+              34
             ],
             "freq": [
               10,
               11,
-              8,
-              10,
-              17,
-              14,
-              6,
+              7,
               11,
-              14
+              15,
+              13,
+              7,
+              8,
+              17
             ]
           }
         },
         {
           "slot": 9,
-          "name": "Ethan Hearn",
+          "name": "Edgar Alvarez",
           "bats": "L",
-          "pos": "C",
-          "woba": ".314",
+          "pos": "1B",
+          "woba": ".319",
           "tier": "low",
-          "attack": "Down",
-          "avoid": "Middle",
-          "note": "Most damage middle (0.658); coldest down.",
+          "attack": "Middle",
+          "avoid": "Up",
+          "note": "Most damage up (0.463); coldest middle.",
           "zone": {
             "xwobacon": [
-              0.0,
-              0.617,
-              0.417,
-              0.22,
-              1.26,
+              0.71,
+              0.752,
+              0.147,
               0.0,
               0.0,
-              0.304,
-              0.293
+              0.423,
+              0.0,
+              0.448,
+              0.53
             ],
             "whiff": [
-              71,
-              31,
+              53,
+              50,
+              50,
+              29,
               0,
-              14,
-              20,
-              33,
-              100,
-              25,
-              0
+              21,
+              30,
+              3,
+              17
             ],
             "freq": [
-              13,
-              17,
+              9,
               10,
-              11,
-              13,
-              4,
-              8,
+              9,
+              12,
+              10,
               14,
-              8
+              8,
+              15,
+              14
             ]
           }
         },
         {
           "slot": 10,
+          "name": "Karson Simas",
+          "bats": "R",
+          "pos": "SS",
+          "woba": ".317",
+          "tier": "low",
+          "attack": "Down",
+          "avoid": "Middle",
+          "note": "Most damage middle (0.484); coldest down.",
+          "zone": {
+            "xwobacon": [
+              0.176,
+              0.44,
+              1.065,
+              0.666,
+              0.404,
+              0.304,
+              0.126,
+              0.304,
+              0.352
+            ],
+            "whiff": [
+              21,
+              28,
+              22,
+              0,
+              16,
+              4,
+              11,
+              9,
+              12
+            ],
+            "freq": [
+              10,
+              13,
+              8,
+              10,
+              16,
+              13,
+              6,
+              11,
+              13
+            ]
+          }
+        },
+        {
+          "slot": 11,
           "name": "Alex Madera",
           "bats": "L",
           "pos": "SS",
@@ -4128,103 +4426,103 @@ const ARM_DATA = {
           }
         },
         {
-          "slot": 11,
-          "name": "Hayden Cantrelle",
-          "bats": "L",
-          "pos": "2B",
-          "woba": ".299",
-          "tier": "low",
-          "attack": "Up",
-          "avoid": "Down",
-          "note": "Most damage down (0.44); coldest up.",
-          "zone": {
-            "xwobacon": [
-              0.0,
-              0.0,
-              0.176,
-              0.293,
-              0.459,
-              0.0,
-              0.0,
-              0.0,
-              0.88
-            ],
-            "whiff": [
-              20,
-              18,
-              11,
-              14,
-              26,
-              0,
-              0,
-              60,
-              20
-            ],
-            "freq": [
-              11,
-              15,
-              10,
-              16,
-              19,
-              8,
-              5,
-              8,
-              8
-            ]
-          }
-        },
-        {
           "slot": 12,
-          "name": "Ariel Armas",
-          "bats": "R",
+          "name": "Ethan Hearn",
+          "bats": "L",
           "pos": "C",
-          "woba": ".245",
+          "woba": ".280",
           "tier": "low",
-          "attack": "Middle",
-          "avoid": "Down",
-          "note": "Most damage down (0.338); coldest middle.",
+          "attack": "Down",
+          "avoid": "Middle",
+          "note": "Most damage middle (0.658); coldest down.",
           "zone": {
             "xwobacon": [
-              0.648,
-              0.324,
               0.0,
-              0.52,
-              0.177,
-              0.176,
-              0.44,
-              0.293,
+              0.617,
+              0.417,
+              0.22,
+              1.26,
+              0.0,
+              0.0,
+              0.304,
               0.293
             ],
             "whiff": [
-              27,
-              10,
-              20,
-              8,
-              4,
-              43,
+              67,
               33,
-              12,
-              33
+              0,
+              14,
+              18,
+              33,
+              50,
+              23,
+              0
             ],
             "freq": [
-              11,
-              17,
-              11,
-              8,
-              17,
               14,
-              5,
+              17,
+              10,
               11,
+              14,
+              4,
+              9,
+              14,
               7
             ]
           }
         },
         {
           "slot": 13,
+          "name": "Ariel Armas",
+          "bats": "R",
+          "pos": "C",
+          "woba": ".243",
+          "tier": "low",
+          "attack": "Middle",
+          "avoid": "Up",
+          "note": "Most damage up (0.321); coldest middle.",
+          "zone": {
+            "xwobacon": [
+              0.486,
+              0.324,
+              0.126,
+              0.601,
+              0.205,
+              0.11,
+              0.44,
+              0.22,
+              0.293
+            ],
+            "whiff": [
+              24,
+              16,
+              15,
+              7,
+              3,
+              35,
+              33,
+              19,
+              43
+            ],
+            "freq": [
+              11,
+              17,
+              11,
+              7,
+              17,
+              14,
+              4,
+              12,
+              7
+            ]
+          }
+        },
+        {
+          "slot": 14,
           "name": "Ed Howard",
           "bats": "R",
           "pos": "SS",
-          "woba": ".218",
+          "woba": ".214",
           "tier": "low",
           "attack": "Middle",
           "avoid": "Down",
@@ -4250,23 +4548,23 @@ const ARM_DATA = {
               14,
               20,
               29,
-              20
+              33
             ],
             "freq": [
-              4,
+              5,
               13,
               11,
               12,
-              18,
-              15,
+              17,
+              14,
               8,
               10,
-              8
+              10
             ]
           }
         },
         {
-          "slot": 14,
+          "slot": 15,
           "name": "Devin Ortiz",
           "bats": "R",
           "pos": "3B",
@@ -4312,7 +4610,7 @@ const ARM_DATA = {
           }
         },
         {
-          "slot": 15,
+          "slot": 16,
           "name": "Haydn McGeary",
           "bats": "R",
           "pos": "C",
@@ -4414,44 +4712,44 @@ const ARM_DATA = {
           "name": "Raudi Rodriguez",
           "bats": "R",
           "pos": "OF",
-          "woba": ".393",
+          "woba": ".386",
           "tier": "elite",
           "attack": "Up",
           "avoid": "Middle",
-          "note": "Most damage middle (0.553); coldest up.",
+          "note": "Most damage middle (0.567); coldest up.",
           "zone": {
             "xwobacon": [
-              0.389,
-              0.237,
-              0.22,
-              1.032,
-              0.54,
-              0.22,
-              0.489,
-              0.396,
-              0.503
+              0.398,
+              0.194,
+              0.176,
+              0.884,
+              0.549,
+              0.379,
+              0.528,
+              0.347,
+              0.587
             ],
             "whiff": [
+              29,
               32,
-              32,
-              44,
+              41,
               6,
-              15,
-              5,
+              22,
+              8,
               0,
-              20,
-              29
+              19,
+              24
             ],
             "freq": [
               11,
               13,
-              12,
-              6,
-              14,
               11,
               7,
               14,
-              11
+              12,
+              7,
+              13,
+              12
             ]
           }
         },
@@ -4459,7 +4757,7 @@ const ARM_DATA = {
           "slot": 3,
           "name": "Gustavo Campero",
           "bats": "L",
-          "pos": "OF",
+          "pos": "C",
           "woba": ".367",
           "tier": "high",
           "attack": "Down",
@@ -4552,44 +4850,44 @@ const ARM_DATA = {
           "name": "Nick Rodriguez",
           "bats": "L",
           "pos": "2B",
-          "woba": ".330",
+          "woba": ".327",
           "tier": "med",
-          "attack": "Down",
+          "attack": "Middle",
           "avoid": "Up",
-          "note": "Most damage up (0.634); coldest down.",
+          "note": "Most damage up (0.604); coldest middle.",
           "zone": {
             "xwobacon": [
-              0.532,
+              0.426,
               0.775,
               0.312,
-              0.376,
-              0.44,
-              0.275,
-              0.22,
-              0.324,
-              0.304
+              0.334,
+              0.4,
+              0.244,
+              0.24,
+              0.321,
+              0.468
             ],
             "whiff": [
-              38,
-              15,
-              11,
+              29,
+              19,
+              9,
+              19,
               21,
-              21,
-              14,
+              12,
               0,
-              10,
-              5
+              9,
+              4
             ],
             "freq": [
               10,
               12,
               10,
-              13,
+              12,
               12,
               13,
               7,
               14,
-              9
+              11
             ]
           }
         },
@@ -4598,53 +4896,145 @@ const ARM_DATA = {
           "name": "Tucker Flint",
           "bats": "L",
           "pos": "OF",
-          "woba": ".294",
-          "tier": "low",
+          "woba": ".325",
+          "tier": "med",
           "attack": "Down",
           "avoid": "Middle",
-          "note": "Most damage middle (0.49); coldest down.",
+          "note": "Most damage middle (0.515); coldest down.",
           "zone": {
             "xwobacon": [
-              0.727,
+              0.758,
               0.0,
-              0.355,
-              0.692,
-              0.424,
-              0.22,
-              0.379,
-              0.0,
+              0.43,
+              0.734,
+              0.425,
+              0.264,
+              0.316,
+              0.291,
               0.532
             ],
             "whiff": [
+              50,
               48,
-              43,
-              20,
-              17,
-              13,
-              20,
-              39,
-              37,
+              19,
+              18,
+              18,
+              19,
+              35,
+              32,
               47
             ],
             "freq": [
               13,
-              8,
-              8,
-              15,
-              17,
+              9,
+              7,
+              14,
+              16,
+              9,
               10,
-              10,
-              10,
+              11,
               9
             ]
           }
         },
         {
           "slot": 7,
+          "name": "J.J. D'Orazio",
+          "bats": "R",
+          "pos": "C",
+          "woba": ".297",
+          "tier": "low",
+          "attack": "Up",
+          "avoid": "Middle",
+          "note": "Most damage middle (0.631); coldest up.",
+          "zone": {
+            "xwobacon": [
+              0.22,
+              0.0,
+              0.0,
+              0.677,
+              0.56,
+              0.88,
+              0.727,
+              0.417,
+              0.22
+            ],
+            "whiff": [
+              44,
+              0,
+              57,
+              29,
+              20,
+              43,
+              29,
+              18,
+              14
+            ],
+            "freq": [
+              13,
+              11,
+              7,
+              6,
+              21,
+              14,
+              8,
+              9,
+              10
+            ]
+          }
+        },
+        {
+          "slot": 8,
+          "name": "Elijah Dunham",
+          "bats": "L",
+          "pos": "OF",
+          "woba": ".294",
+          "tier": "low",
+          "attack": "Up",
+          "avoid": "Down",
+          "note": "Most damage down (0.612); coldest up.",
+          "zone": {
+            "xwobacon": [
+              0.176,
+              0.0,
+              0.0,
+              0.213,
+              0.263,
+              0.72,
+              0.0,
+              0.676,
+              0.71
+            ],
+            "whiff": [
+              33,
+              36,
+              36,
+              11,
+              15,
+              0,
+              50,
+              27,
+              50
+            ],
+            "freq": [
+              11,
+              12,
+              10,
+              15,
+              13,
+              11,
+              7,
+              14,
+              8
+            ]
+          }
+        },
+        {
+          "slot": 9,
           "name": "Kyren Paris",
           "bats": "R",
           "pos": "2B",
-          "woba": ".290",
+          "woba": ".287",
           "tier": "low",
           "attack": "Down",
           "avoid": "Up",
@@ -4654,8 +5044,8 @@ const ARM_DATA = {
               0.417,
               0.352,
               0.82,
-              0.625,
-              0.503,
+              0.532,
+              0.44,
               0.0,
               0.0,
               0.176,
@@ -4665,74 +5055,74 @@ const ARM_DATA = {
               0,
               33,
               38,
-              25,
+              20,
               0,
               40,
               0,
               33,
-              44
+              50
             ],
             "freq": [
               7,
-              12,
-              10,
-              8,
+              11,
+              9,
+              9,
               13,
               16,
               9,
-              9,
+              8,
               17
             ]
           }
         },
         {
-          "slot": 8,
+          "slot": 10,
           "name": "Mac McCroskey",
           "bats": "R",
           "pos": "SS",
-          "woba": ".283",
+          "woba": ".284",
           "tier": "low",
-          "attack": "Down",
-          "avoid": "Up",
-          "note": "Most damage up (0.504); coldest down.",
+          "attack": "Up",
+          "avoid": "Middle",
+          "note": "Most damage middle (0.481); coldest up.",
           "zone": {
             "xwobacon": [
               0.176,
-              0.727,
-              1.25,
+              0.582,
+              0.625,
               0.778,
-              0.304,
+              0.376,
               0.352,
-              0.0,
+              1.015,
               0.377,
               0.0
             ],
             "whiff": [
-              25,
+              31,
+              35,
+              50,
               33,
-              33,
-              38,
-              24,
-              20,
+              30,
+              27,
               0,
-              36,
-              67
+              31,
+              55
             ],
             "freq": [
+              11,
+              13,
               10,
-              14,
-              9,
               9,
               15,
               10,
               7,
-              14,
+              13,
               11
             ]
           }
         },
         {
-          "slot": 9,
+          "slot": 11,
           "name": "Ben Gobbel",
           "bats": "R",
           "pos": "SS",
@@ -4778,186 +5168,94 @@ const ARM_DATA = {
           }
         },
         {
-          "slot": 10,
-          "name": "J.J. D'Orazio",
-          "bats": "R",
-          "pos": "C",
-          "woba": ".277",
+          "slot": 12,
+          "name": "Cole Fontenelle",
+          "bats": "L",
+          "pos": "3B",
+          "woba": ".259",
           "tier": "low",
           "attack": "Up",
-          "avoid": "Middle",
-          "note": "Most damage middle (0.67); coldest up.",
+          "avoid": "Down",
+          "note": "Most damage down (0.575); coldest up.",
           "zone": {
             "xwobacon": [
+              0.176,
               0.293,
               0.0,
-              0.0,
-              0.677,
-              0.582,
+              0.421,
               0.88,
-              0.44,
-              0.625,
-              0.22
+              0.22,
+              0.602,
+              0.293,
+              0.693
             ],
             "whiff": [
-              50,
-              0,
-              50,
-              33,
-              21,
-              50,
-              40,
-              20,
-              17
-            ],
-            "freq": [
-              14,
-              9,
               8,
-              7,
-              18,
-              13,
-              7,
-              11,
-              11
-            ]
-          }
-        },
-        {
-          "slot": 11,
-          "name": "Elijah Dunham",
-          "bats": "L",
-          "pos": "OF",
-          "woba": ".274",
-          "tier": "low",
-          "attack": "Up",
-          "avoid": "Down",
-          "note": "Most damage down (0.609); coldest up.",
-          "zone": {
-            "xwobacon": [
-              0.22,
-              0.0,
-              0.0,
-              0.156,
-              0.263,
-              0.693,
-              0.0,
-              0.676,
-              0.88
-            ],
-            "whiff": [
-              29,
-              31,
-              44,
-              13,
-              18,
+              39,
+              55,
+              22,
+              21,
               0,
-              33,
-              27,
-              75
-            ],
-            "freq": [
-              11,
-              12,
-              9,
-              15,
-              12,
-              11,
-              6,
-              16,
-              8
-            ]
-          }
-        },
-        {
-          "slot": 12,
-          "name": "David Calabrese",
-          "bats": "L",
-          "pos": "OF",
-          "woba": ".265",
-          "tier": "low",
-          "attack": "Up",
-          "avoid": "Down",
-          "note": "Most damage down (0.345); coldest up.",
-          "zone": {
-            "xwobacon": [
-              0.0,
-              0.532,
-              0.0,
-              0.176,
-              0.473,
-              0.147,
-              0.22,
-              0.0,
-              0.582
-            ],
-            "whiff": [
-              50,
-              7,
-              0,
-              36,
               20,
-              0,
-              0,
-              67,
-              43
+              14,
+              7
             ],
             "freq": [
+              11,
+              14,
+              8,
+              12,
               10,
               11,
-              9,
-              15,
-              15,
-              9,
               8,
-              8,
-              15
+              12,
+              14
             ]
           }
         },
         {
           "slot": 13,
-          "name": "Cole Fontenelle",
+          "name": "David Calabrese",
           "bats": "L",
-          "pos": "3B",
-          "woba": ".262",
+          "pos": "OF",
+          "woba": ".255",
           "tier": "low",
           "attack": "Up",
-          "avoid": "Middle",
-          "note": "Most damage middle (0.555); coldest up.",
+          "avoid": "Down",
+          "note": "Most damage down (0.316); coldest up.",
           "zone": {
             "xwobacon": [
-              0.293,
               0.0,
+              0.532,
               0.0,
-              0.582,
-              0.88,
-              0.293,
-              0.44,
-              0.293,
-              0.97
+              0.22,
+              0.473,
+              0.126,
+              0.22,
+              0.0,
+              0.582
             ],
             "whiff": [
-              11,
-              42,
-              55,
-              33,
-              25,
+              43,
+              7,
               0,
               29,
-              8,
-              10
+              23,
+              0,
+              0,
+              55,
+              41
             ],
             "freq": [
-              12,
-              12,
+              11,
               10,
+              8,
+              15,
+              14,
+              9,
+              8,
               10,
-              12,
-              12,
-              7,
-              12,
-              14
+              15
             ]
           }
         },
@@ -4966,44 +5264,44 @@ const ARM_DATA = {
           "name": "Harold Coll",
           "bats": "R",
           "pos": "SS",
-          "woba": ".197",
+          "woba": ".201",
           "tier": "low",
           "attack": "Down",
           "avoid": "Middle",
-          "note": "Most damage middle (0.377); coldest down.",
+          "note": "Most damage middle (0.336); coldest down.",
           "zone": {
             "xwobacon": [
+              0.203,
+              0.232,
               0.0,
-              0.237,
-              0.0,
-              0.22,
-              0.638,
-              0.126,
+              0.203,
+              0.558,
+              0.11,
               0.0,
               0.073,
               0.213
             ],
             "whiff": [
+              5,
               7,
-              11,
-              12,
               10,
-              16,
-              19,
+              12,
+              15,
+              18,
               0,
-              22,
-              32
+              26,
+              29
             ],
             "freq": [
-              7,
-              12,
               8,
-              12,
-              16,
-              12,
+              13,
+              8,
+              13,
+              15,
+              11,
               5,
               13,
-              15
+              14
             ]
           }
         }
@@ -5045,6 +5343,28 @@ function renderArm(){
     `<div class="key"><div class="num">${k.n}</div><div class="txt">${k.html}</div></div>`).join('');
   $('metricToggle').innerHTML=ARM_DATA.zoneMetrics.map(z=>
     `<button data-k="${z.key}" class="${z.key===state.metric?'on':''}" onclick="setMetric('${z.key}')">${z.label}</button>`).join('');
+  // arsenal (optional)
+  if(ARM_DATA.arsenal && ARM_DATA.arsenal.length){
+    $('arsSec').style.display='';
+    const maxUse=Math.max(...ARM_DATA.arsenal.map(a=>a.use));
+    $('ars').innerHTML=ARM_DATA.arsenal.map(a=>`
+      <div class="apitch">
+        <div class="r1">
+          <span class="nm"><span class="dot" style="background:${a.color}"></span>${a.name}</span>
+          <span class="use">${a.use.toFixed(1)}%</span>
+          <span class="wf">${a.whiff.toFixed(0)}% whiff</span>
+        </div>
+        <div class="usebar"><i style="width:${100*a.use/maxUse}%;background:${a.color}"></i></div>
+        <div class="specs">
+          <span><b>${a.velo.toFixed(1)}</b> mph</span>
+          <span>IVB <b>${a.ivb>0?'+':''}${a.ivb.toFixed(1)}"</b></span>
+          <span>HB <b>${a.hb>0?'+':''}${a.hb.toFixed(1)}"</b></span>
+          <span><b>${a.spin}</b> rpm</span>
+          <span>vL <b>${a.vl.toFixed(0)}%</b> / vR <b>${a.vr.toFixed(0)}%</b></span>
+          ${a.note?`<span style="color:var(--gold-soft)">${a.note}</span>`:''}
+        </div>
+      </div>`).join('');
+  }
 }
 function renderTeams(){
   $('teams').innerHTML=ARM_DATA.opponents.map((t,i)=>
@@ -5082,6 +5402,9 @@ function openSheet(i){
   $('dMeta').textContent=`${h.bats}HH · ${h.pos} · wOBA ${h.woba}`;
   $('dTier').textContent=h.tier; $('dTier').className='tier '+tierClass(h.tier);
   $('dAttack').textContent=h.attack; $('dAvoid').textContent=h.avoid;
+  const bm=ARM_DATA.bucketMap||{};
+  $('dAttack').innerHTML=h.attack+(bm[h.attack]?`<div class="planmap">→ ${bm[h.attack]}</div>`:'');
+  $('dAvoid').innerHTML=h.avoid+(bm[h.avoid]?`<div class="planmap">→ ${bm[h.avoid]}</div>`:'');
   $('dNote').textContent=h.note||'';
   renderZone();
   renderBuckets(h);
